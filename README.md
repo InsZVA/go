@@ -1,3 +1,8 @@
+# 关于这个仓库
+
+Golang语言的特性的确强大而简洁，但是关于开发组的“怪癖”，大家可能也有所耳闻。有些可能很好但是不符合
+Go官方开发组的胃口的 ，我会更新在这里，感兴趣的可以使用我改过的Go。
+
 # The Go Programming Language
 
 Go is an open source programming language that makes it easy to build simple,
