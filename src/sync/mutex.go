@@ -38,6 +38,17 @@ const (
 	mutexWaiterShift = iota
 )
 
+// Try lock m.
+// If the lock is already in use, return false only.
+// See https://github.com/golang/go/issues/6123
+func (m *Mutex) TryLock() (locked bool) {
+	locked = atomic.CompareAndSwapInt32(&m.state, 0, mutexLocked)
+	if locked && race.Enabled {
+		race.Acquire(unsafe.Pointer(m))
+	}
+	return
+}
+
 // Lock locks m.
 // If the lock is already in use, the calling goroutine
 // blocks until the mutex is available.
